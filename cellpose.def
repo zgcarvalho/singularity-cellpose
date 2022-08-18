@@ -1,0 +1,19 @@
+BootStrap: docker
+From: opensuse/tumbleweed
+
+%post
+zypper in -y python3-pip libglvnd libgthread-2_0-0 python3-qt5  
+python3 -m venv /opt/cellpose-venv/
+source /opt/cellpose-venv/bin/activate
+pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu116
+pip install cellpose[gui]
+
+%runscript 
+unset SESSION_MANAGER
+source /opt/cellpose-venv/bin/activate
+$@
+
+%labels
+Author jose.pereira@lnbio.cnpem.br
+Version v0.0.1
+Info OpenSuSE Tumbleweed with Cellpose preinstalled.
