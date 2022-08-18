@@ -6,7 +6,11 @@ Build:
 
 `sudo singularity build --nv cellpose.sif cellpose.def`
 
-Run:
+Run [GUI]:
 
-`singularity run --nv -B /etc/machine-id -B /run/user/$UID/ cellpose.sif cellpose`
+`singularity run --nv -B /etc/machine-id -B /run/user/$UID/ cellpose.sif`
+
+or
+
+`singularity run --nv -B /etc/machine-id -B /run/user/$UID/ cellpose.sif -h`
 

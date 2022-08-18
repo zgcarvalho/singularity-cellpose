@@ -3,15 +3,16 @@ From: opensuse/tumbleweed
 
 %post
 zypper in -y python3-pip libglvnd libgthread-2_0-0 python3-qt5  
+zypper clean
 python3 -m venv /opt/cellpose-venv/
 source /opt/cellpose-venv/bin/activate
-pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu116
-pip install cellpose[gui]
+pip install --no-cache-dir torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu116
+pip install --no-cache-dir cellpose[gui]
 
 %runscript 
 unset SESSION_MANAGER
 source /opt/cellpose-venv/bin/activate
-$@
+cellpose $@
 
 %labels
 Author jose.pereira@lnbio.cnpem.br
